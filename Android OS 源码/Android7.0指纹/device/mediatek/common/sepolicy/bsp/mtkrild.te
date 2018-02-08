@@ -1,0 +1,10 @@
+# ==============================================
+# Policy File of /system/bin/mtkrild Executable File
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+set_prop(mtkrild, persist_service_atci_prop)
+allow mtkrild logmuch_prop:property_service set;
+

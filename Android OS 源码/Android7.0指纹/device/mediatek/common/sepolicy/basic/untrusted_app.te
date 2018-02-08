@@ -1,0 +1,22 @@
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+# Date : 2014/09/09
+# Operation : Development GMO Feature "Move OAT to SD Card"
+# Purpose : for GMO ROM Size Slim
+#allow untrusted_app dalvikcache_data_file:lnk_file read;
+
+# Date: 2016/02/26
+# Operation: Migration
+# Purpose: Allow MTK modified ElephantStress and WhatsTemp to read thermal zone temperatures
+#					 from MTK kernel modules for thermal tests at OEM/ODM.
+allow untrusted_app proc_mtktz:dir search;
+allow untrusted_app proc_mtktz:file r_file_perms;
+
+# Date : WK17.29
+# Operation : MT6739 SQC
+# Purpose : for CTS verifier "Camera Video" binder fail
+allow untrusted_app cameraserver:fifo_file read;
+allow untrusted_app cameraserver:fifo_file write;
+allow untrusted_app cameraserver:fifo_file getattr;

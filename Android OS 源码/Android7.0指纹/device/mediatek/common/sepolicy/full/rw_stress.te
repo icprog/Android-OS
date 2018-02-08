@@ -1,0 +1,17 @@
+# ==============================================
+# Policy File of /system/vendor/bin/rw_stress.sh Executable File
+
+# ==============================================
+# Type Declaration
+# ==============================================
+type stress ,domain, domain_deprecated;
+type stress_exec , exec_type, file_type;
+
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+# date: 2017/7/20 wk1729
+# purpose: Read/write stress test for TLC NAND
+# ==============================================
+init_daemon_domain(stress)

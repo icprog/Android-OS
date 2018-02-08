@@ -1,0 +1,11 @@
+# ==============================================
+# Policy File of /system/bin/mtkfusionrild Executable File
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+set_prop(mtkfusionrild, persist_service_atci_prop)
+
+# For RIL VT to use socket
+allow mtkfusionrild cdma_prop:property_service set;

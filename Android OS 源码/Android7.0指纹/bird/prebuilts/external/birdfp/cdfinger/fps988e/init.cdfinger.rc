@@ -1,0 +1,8 @@
+on init
+    chmod 0666 /dev/fpsdev0
+
+service cdfingerdaemon /system/bin/cdfingerdaemon
+    class main
+    user system
+    group system
+

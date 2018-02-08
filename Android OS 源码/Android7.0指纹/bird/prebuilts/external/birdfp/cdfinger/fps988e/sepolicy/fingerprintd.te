@@ -1,0 +1,5 @@
+
+binder_call(fingerprintd, cdfingerserver)
+allow fingerprintd cdfingerserver_service:service_manager find;
+allow fingerprintd permission_service:service_manager find;
+allow fingerprintd system_server:binder call;

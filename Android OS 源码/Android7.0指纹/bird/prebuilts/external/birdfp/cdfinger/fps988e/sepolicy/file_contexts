@@ -1,0 +1,4 @@
+
+/dev/fps[0-9]*    u:object_r:cdfinger_device:s0
+/dev/fpsdev0    u:object_r:cdfinger_device:s0
+/system/bin/cdfingerdaemon  u:object_r:cdfingerserver_exec:s0

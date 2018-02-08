@@ -1,0 +1,6 @@
+# ==============================================
+# MTK Policy Rule
+# ============
+
+genfscon proc /secmem0 u:object_r:proc_secmem:s0
+genfscon debugfs /tracing/instances u:object_r:debugfs_tracing:s0

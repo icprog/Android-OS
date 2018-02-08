@@ -1,0 +1,4 @@
+
+cdfinger.fingerprint         			u:object_r:cdfingerserver_service:s0
+cdfingerservice 		  		u:object_r:cdfingerserver_service:s0
+cdfingeraccessoryservice			u:object_r:cdfingerserver_service:s0

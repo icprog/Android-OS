@@ -1,0 +1,46 @@
+
+type cdfingerserver, domain;
+type cdfingerserver_exec, exec_type, file_type;
+typeattribute cdfingerserver mlstrustedsubject;
+
+init_daemon_domain(cdfingerserver)
+
+r_dir_file(cdfingerserver, sdcard_type)
+file_type_auto_trans(cdfingerserver,system_data_file,cdfinger_data_file)
+binder_use(cdfingerserver)
+binder_call(cdfingerserver, binderservicedomain)
+binder_call(cdfingerserver, appdomain)
+binder_call(cdfingerserver, fingerprintd)
+binder_service(cdfingerserver)
+
+allow cdfingerserver self:process execmem;
+allow cdfingerserver kernel:system module_request;
+allow cdfingerserver sdcard_type:file write;
+allow cdfingerserver fuse:dir create_dir_perms;
+allow cdfingerserver fuse:file create_file_perms;
+allow cdfingerserver self:capability { dac_override dac_read_search };
+
+allow cdfingerserver cdfinger_device:chr_file {read write open ioctl};
+allow cdfingerserver cdfingerserver_service:service_manager add;
+
+r_dir_file(cdfingerserver, cdfinger_data_file)
+
+allow cdfingerserver cdfinger_data_file:dir ra_dir_perms;
+allow cdfingerserver cdfinger_data_file:file create_file_perms;
+#allow cdfingerserver mobicore:unix_stream_socket connectto;
+allow cdfingerserver system_file:file {read open execute_no_trans execute};
+allow cdfingerserver shell_exec:file { read open execute_no_trans execute };
+allow cdfingerserver app_data_file:dir {read write open ioctl execute search getattr add_name create_dir_perms};
+allow cdfingerserver app_data_file:file {read write open ioctl create_file_perms};
+allow cdfingerserver property_socket:sock_file { write };
+allow cdfingerserver init:unix_stream_socket { connectto };
+allow cdfingerserver cdfinger_prop:property_service { set };
+allow cdfingerserver storage_file:lnk_file {read};
+allow cdfingerserver mnt_user_file:dir {search};
+allow system_app cdfingerserver_service:service_manager add;
+allow system_app cdfinger_device:chr_file rw_file_perms;
+allow system_app cdfinger_data_file:dir create_dir_perms;
+allow system_app cdfinger_data_file:file create_file_perms;
+allow system_app cdfinger_prop:property_service { set };
+
+

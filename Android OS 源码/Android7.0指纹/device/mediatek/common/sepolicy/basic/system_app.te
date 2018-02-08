@@ -1,0 +1,59 @@
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+typeattribute system_app mlstrustedsubject;
+
+# Date : 2014/07/31
+# Stage: BaseUT
+# Purpose :[CdsInfo][CdsInfo uses net shell commands to get network information and write WI-FI MAC address by NVRAM]
+# Package Name: com.mediatek.connectivity
+allow system_app nvram_agent_binder:binder call;
+
+# Date : 2016/07/01
+# Purpose : Gain permission to system apps to create folder
+allow system_app media_rw_data_file:dir create;
+
+# Date : 2016/07/07
+# Purpose : Gain permission to system apps to append file for tool testing
+userdebug_or_eng(`
+allow system_app media_rw_data_file:file append;
+')
+
+# Date : 2016/07/12
+# Purpose : Issue submitter need creat folder on SD card
+allow system_app vfat:dir create;
+
+
+# Date : 2016/08/27
+# Purpose : Gain permission to system apps read sdcard file for auto sanity case.
+userdebug_or_eng(`
+allow system_app media_rw_data_file:dir { read open };
+allow system_app media_rw_data_file:file { read open };
+')
+
+# Date : 2017/02/07
+# Operation : Migration
+# Purpose :  LPPe Service can update the event to AGPSD
+# Package: com.mediatek.location.lppe
+allow system_app mtk_agpsd:unix_dgram_socket sendto;
+
+#Dat: 2017/02/14
+#Purpose: allow set telephony Sensitive property
+set_prop(system_app, mtk_telephony_sensitive_prop)
+
+#bird
+allow system_app bird_sensor_data_file:dir { create open write search remove_name  add_name};
+allow system_app bird_sensor_data_file:file { create open write read getattr unlink };
+allow system_app als_ps_device:chr_file { read  write open ioctl };
+allow system_app gsensor_device:chr_file { read open ioctl };
+
+#############################
+# fingerprint
+#
+#add for microarray fingerprint begin
+allow system_app finger_device:chr_file {create_file_perms};
+allow system_app fingerprintd_data_file:dir {create_dir_perms};
+allow system_app fingerprintd_data_file:file {create_file_perms};
+#add for microarray fingerprint end
+
