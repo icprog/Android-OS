@@ -1,0 +1,6 @@
+
+#chipsailing
+/dev/cs_spi    u:object_r:csfinger_device:s0
+#For ChipSailing fingerprint
+/vendor/bin/hw/vendor.chipsailing.fingerprint@1.0-service        u:object_r:cs_fp_hw_exec:s0
+

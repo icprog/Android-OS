@@ -1,0 +1,29 @@
+
+#chipsailing
+allow hal_fingerprint_default csfinger_device:chr_file { open read write ioctl getattr };
+
+allow hal_fingerprint_default system_data_file:file { open read getattr lock };
+
+#allow hal_fingerprint_default self:capability { dac_override };
+
+# allow HAL module to read dir contents
+allow hal_fingerprint_default fingerprintd_data_file:file create_file_perms;
+
+# allow HAL module to read/write/unlink contents of this dir
+allow hal_fingerprint_default fingerprintd_data_file:dir rw_dir_perms;
+
+allow hal_fingerprint_default platform_app:binder {call};
+allow hal_fingerprint_default uhid_device:chr_file {open ioctl write read};
+
+allow hal_fingerprint_default fuse:dir {search};
+allow hal_fingerprint_default mnt_user_file:dir {search};
+allow hal_fingerprint_default mnt_user_file:lnk_file {read};
+allow hal_fingerprint_default storage_file:lnk_file {read};
+
+allow hal_fingerprint_default sysfs:file { open read write getattr };
+allow hal_fingerprint_default sysfs:dir { open read write getattr };
+
+#allow hal_fingerprint_default window_service:service_manager find;
+#allow hal_fingerprint_default power_service:service_manager find;
+#allow hal_fingerprint_default sysfs_usb_supply:dir search;
+

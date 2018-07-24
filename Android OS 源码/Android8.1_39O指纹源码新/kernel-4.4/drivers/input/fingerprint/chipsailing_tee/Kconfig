@@ -1,0 +1,4 @@
+config BIRD_FINGERPRINT_CHIPSAILING_TEE
+	bool "CONFIG_BIRD_FINGERPRINT_CHIPSAILING_TEE chipsailing for Mediatek package SC338P"
+	default n     
+

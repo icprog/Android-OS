@@ -1,0 +1,13 @@
+#
+# Makefile for all kinds of Fingerprint
+#
+
+obj-$(CONFIG_FINGERPRINT_MTK_CDFINGER_V31)	+=  cdfinger_v31/
+obj-$(CONFIG_GOODIX_FINGERPRINT) += goodix/
+obj-$(CONFIG_FPC_FINGERPRINT) += fpc/
+obj-$(CONFIG_FINGERPRINT_MTK_SUNWAVECORP_V111) += sunwavecorp_v111/
+obj-$(CONFIG_BIRD_FINGERPRINT_ICNT7152) += icnt7152/
+obj-$(CONFIG_BIRD_FINGERPRINT_MICROARRAY_FP_V4006) += microarray_fp_v4006/
+obj-$(CONFIG_BIRD_FINGERPRINT_CHIPSAILING_TEE) += chipsailing_tee/
+obj-$(CONFIG_BETTERLIFE_FINGERPRINT) += blestech/
+obj-$(CONFIG_MTK_FINGERPRINT_SUNWAVECORP) += sunwave_tee/

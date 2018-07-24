@@ -1,0 +1,11 @@
+
+#chipsailing
+allow untrusted_app csfinger_device: chr_file{ open read write ioctl getattr };
+# add for chipsailing cs_fp
+allow untrusted_app cs_fp_hw:binder { call transfer };
+
+allow cs_fp_hw untrusted_app:binder { call transfer };
+
+#allow untrusted_app cs_fp_hwservice:hwservice_manager { find };
+
+

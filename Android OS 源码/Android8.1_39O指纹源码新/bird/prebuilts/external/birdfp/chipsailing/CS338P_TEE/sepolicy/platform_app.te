@@ -1,0 +1,12 @@
+
+#chipsailing
+allow platform_app csfinger_device: chr_file{ open read write ioctl getattr };
+
+allow platform_app cs_fp_hw:binder { call transfer };
+
+allow cs_fp_hw platform_app:binder { call transfer };
+
+allow platform_app cs_fp_hwservice:hwservice_manager { find };
+
+#allow platform_app default_android_hwservice:hwservice_manager { find };
+

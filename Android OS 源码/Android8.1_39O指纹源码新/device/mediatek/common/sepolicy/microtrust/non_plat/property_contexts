@@ -1,0 +1,8 @@
+# ==============================================
+# MICROTRUST Policy Rule
+# ==============================================
+
+#=============allow teei daemon and init_thh daemon to set property  ==============
+soter.teei.   u:object_r:soter_teei_prop:s0
+KM.server.status           u:object_r:soter_teei_prop:s0
+GK.server.status           u:object_r:soter_teei_prop:s0

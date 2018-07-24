@@ -1,0 +1,4 @@
+
+/dev/madev0                           u:object_r:mafinger_device:s0
+/data/system/ma_fingerprint/*   u:object_r:ma_data_file:s0
+

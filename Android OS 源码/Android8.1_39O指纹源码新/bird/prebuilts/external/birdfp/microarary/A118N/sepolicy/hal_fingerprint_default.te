@@ -1,0 +1,8 @@
+
+# device/mediatek/mt6739/sepolicy/bsp/hal_fingerprint_default.te ?
+# system/sepolicy/vendor/hal_fingerprint_default.te ?
+# allow hal_fingerprint_default mafinger_device:chr_file {open read write ioctl};
+allow hal_fingerprint_default mafinger_device:chr_file {open read write ioctl};
+allow hal_fingerprint_default ma_data_file:file {create_file_perms};
+allow hal_fingerprint_default system_data_file:dir { write read};
+allow hal_fingerprint_default ma_data_file:dir{create add_name search getattr open read write search unlink};

@@ -1,0 +1,10 @@
+# ==============================================
+# MICROTRUST Policy Rule
+# ==============================================
+
+# Date : WK15.42
+# Operation : TEEI Migration
+# Purpose : allow teei tester APK to use teei_client_device
+userdebug_or_eng(`
+  allow untrusted_app teei_client_device:chr_file write;
+')

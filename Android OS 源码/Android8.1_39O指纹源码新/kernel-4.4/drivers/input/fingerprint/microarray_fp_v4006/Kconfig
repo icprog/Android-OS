@@ -1,0 +1,14 @@
+# Copyright (C) MicroArray  
+# MicroArray Fprint Driver Code
+# Kconfig
+# Date: 2017-3-15
+# Version: v4.0.06
+# Author: guq
+# Contact: guq@microarray.com.cn
+
+config BIRD_FINGERPRINT_MICROARRAY_FP_V4006
+	bool "CONFIG_BIRD_FINGERPRINT_MICROARRAY_FP_V4006 A118N microarray fp for Mediatek package"
+	default n
+        ---help---
+          A118N fp sensor  for MT6739 with dts       
+

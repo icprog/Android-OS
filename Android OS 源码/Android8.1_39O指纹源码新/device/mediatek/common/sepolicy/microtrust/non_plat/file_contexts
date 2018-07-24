@@ -1,0 +1,47 @@
+# ==============================================
+# MICROTRUST Policy Rule
+# ==============================================
+
+#############################
+# Data files
+#
+/data/thh(/.*)? u:object_r:teei_data_file:s0
+/data/misc/thh(/.*)? u:object_r:teei_thh_data_file:s0
+
+##########################
+# Devices
+#
+/dev/teei_config u:object_r:teei_config_device:s0
+/dev/teei_client u:object_r:teei_client_device:s0
+/dev/tee0 u:object_r:teei_client_device:s0
+/dev/tz_vfs u:object_r:teei_vfs_device:s0
+#rpmb char device
+/dev/rpmb0 u:object_r:teei_rpmb_device:s0
+/dev/emmcrpmb0 u:object_r:teei_rpmb_device:s0
+/dev/teei_fp u:object_r:teei_fp_device:s0
+/dev/ut_keymaster u:object_r:ut_keymaster_device:s0
+/dev/utr_tui u:object_r:utr_tui_device:s0
+
+#############################
+# sysfs files
+#
+/sys/(devices\/platform|devices)/utos(/.*)?  u:object_r:teei_control_file:s0
+#/sys/(devices\/platform|devices)/utos(/.*)?  u:object_r:teei_control_file:s0
+
+/(system\/vendor|vendor)/bin/init_thh u:object_r:init_thh_service_exec:s0
+/(system\/vendor|vendor)/bin/teei_daemon u:object_r:tee_exec:s0
+
+#############################
+# microtrust THH daemon
+#
+/(vendor|system/vendor)/bin/hw/vendor\.microtrust\.hardware\.thh@2\.0-service   u:object_r:hal_thh_default_exec:s0
+# microtrust TUI daemon
+#
+/(vendor|system/vendor)/bin/hw/vendor\.microtrust\.hardware\.tui@2\.0-service   u:object_r:hal_tui_default_exec:s0
+
+#############################
+# microtrust IFAA hidl service
+#
+/(system\/vendor|vendor)/bin/hw/vendor\.microtrust\.hardware\.ifaa@1\.0-service u:object_r:hal_ifaa_exec:s0
+
+/(vendor|system/vendor)/bin/hw/vendor\.microtrust\.hardware\.capi@2\.0-service   u:object_r:hal_capi_default_exec:s0

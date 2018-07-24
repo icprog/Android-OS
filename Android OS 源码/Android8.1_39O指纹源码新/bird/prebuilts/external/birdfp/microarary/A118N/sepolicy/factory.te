@@ -1,0 +1,10 @@
+
+# ==============================================
+# bird Policy Rule
+# author: binjie.yang
+# ==============================================
+
+allow factory mafinger_device:chr_file {open read write ioctl};
+
+allow radio mafinger_device:chr_file {open read write ioctl};
+

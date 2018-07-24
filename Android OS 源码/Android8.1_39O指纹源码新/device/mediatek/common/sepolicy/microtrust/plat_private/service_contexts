@@ -1,0 +1,5 @@
+# ==============================================
+# MICROTRUST Policy Rule
+# ==============================================
+# for ifaa upgrade on android O
+ifaa_service     u:object_r:mtk_ifaa_service:s0

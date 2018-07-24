@@ -1,0 +1,24 @@
+# MTK platform configure
+# $(MTK_TARGET_VENDOR_RC)/ <==> ${ro.mtkrc.path} 
+
+#on init
+#    mkdir /data/system/wdong 0777 system system
+
+##sunwave
+#service fingerprintd /system/bin/fingerprintd
+#    class late_start
+#    user system
+#
+##sunwave
+
+# Jone.Chen for finger
+on post-fs-data
+	chmod 777 /dev/madev0
+	chwon system system /dev/madev0
+	mkdir /data/system/ma_fingerprint 0770 system system
+
+
+service fp /system/bin/fpserver
+    class main
+    user root  
+

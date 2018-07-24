@@ -1,0 +1,15 @@
+
+on boot
+    chmod 0666 /dev/cs_spi
+    chmod 0755 /vendor/bin/hw/vendor.chipsailing.fingerprint@1.0-service
+	
+service cs_fp_hw /vendor/bin/hw/vendor.chipsailing.fingerprint@1.0-service
+    class late_start
+    user system
+    group root input
+	
+service fps_hal /vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
+    class late_start
+    user system
+    group system input	
+

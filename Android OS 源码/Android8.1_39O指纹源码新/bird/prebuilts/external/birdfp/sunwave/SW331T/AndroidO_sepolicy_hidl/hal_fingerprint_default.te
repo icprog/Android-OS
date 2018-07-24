@@ -1,0 +1,79 @@
+
+#type hal_fingerprint_default, domain;
+#hal_server_domain(hal_fingerprint_default, hal_fingerprint)
+
+#type hal_fingerprint_default_exec, exec_type, vendor_file_type, file_type;
+#init_daemon_domain(hal_fingerprint_default)
+allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
+allow hal_fingerprint_default uhid_device:chr_file { write open ioctl };
+allow hal_fingerprint_default ctl_default_prop:property_service { set };
+allow hal_fingerprint_default property_socket:sock_file { write };
+allow hal_fingerprint_default init:unix_stream_socket { connectto };
+#add for sunwave fingerprint start 
+type sf_device,dev_type;
+type sf_data_file, file_type, data_file_type;
+
+#allow hal_fingerprint_default mobicore_user_device:chr_file { read write open ioctl};
+allow hal_fingerprint_default self:netlink_kobject_uevent_socket { read};
+#allow hal_fingerprint_default mobicore: unix_stream_socket {connectto };
+
+# Sunwave: Please modify ${ANDROID_BUILD_TOP}/external/sepolicy/hal_fingerprint_default.te to  
+# configurate SEAndroid policy for hal_fingerprint_default which is specialized by Sunwave.
+
+# Sunwave 5-1: define the context labels for Sunwave relatives.
+#type sf_device, dev_type;
+#type sf_data_file, file_type;
+type sf_service, vndservice_manager_type;
+
+# Sunwave 5-2: allow HAL module to access '/dev/sunwave_fp'.
+allow hal_fingerprint_default sf_device:chr_file rw_file_perms;
+
+# Sunwave 5-3: allow HAL module to access netlink uevent.
+allow hal_fingerprint_default self:netlink_kobject_uevent_socket { create setopt bind read };
+
+# Sunwave 5-4: allow HAL module to access '/data/system/sunwave(/.*)?'.
+#allow hal_fingerprint_default sf_data_file:dir create_dir_perms;
+
+allow hal_fingerprint_default sf_data_file:dir create_file_perms;
+allow hal_fingerprint_default sf_data_file:file create_file_perms;
+
+# Sunwave 5-5: allow HAL module to register 'SunwaveFingerprintService'.
+#allow hal_fingerprint_default sf_service:vndservice_manager { add };
+
+# Sunwave 5-6: allow HAL module to access '/dev/qseecom'
+allow hal_fingerprint_default tee_device:chr_file { open read ioctl write };
+
+# Sunwave 5-8: Allow fpserver to access /dev/input/event*.
+allow hal_fingerprint_default input_device:dir { search };
+allow hal_fingerprint_default input_device:chr_file { open read write ioctl rw_file_perms};
+#add test for lava 
+allow hal_fingerprint_default teei_fp_device:chr_file { read write ioctl open };
+allow factory sf_device:chr_file rw_file_perms; 
+allow factory self:netlink_kobject_uevent_socket { create setopt bind read }; 
+allow factory sf_data_file:dir create_dir_perms; 
+allow factory sf_data_file:file create_file_perms; 
+allow factory teei_fp_device:chr_file { read write ioctl open };
+#end test for lava
+
+# just for QSEE solution to load TA files start
+#allow hal_fingerprint_default firmware_file:dir { search };
+#allow hal_fingerprint_default firmware_file:file r_file_perms;
+# just for QSEE solution to load TA files end
+
+#allow platform_app sf_service:vndservice_manager find;
+#allow mobicore mobicore_data_file:dir { rmdir };
+allow hal_fingerprint_default storage_file:lnk_file { read  };
+allow hal_fingerprint_default mnt_user_file:lnk_file { read  };
+allow hal_fingerprint_default mnt_user_file:dir { read search };
+allow hal_fingerprint_default sdcardfs:dir { read search };
+allow hal_fingerprint_default media_rw_data_file:dir { open read search };
+
+#allow untrusted_app sf_service:service_manager find;
+
+#cpu freq optimize
+#allow hal_fingerprint_default sysfs_devices_system_cpu:file { write };
+
+
+
+
+

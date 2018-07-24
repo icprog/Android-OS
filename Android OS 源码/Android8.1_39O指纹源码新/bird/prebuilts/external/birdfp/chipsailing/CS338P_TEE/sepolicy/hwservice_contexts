@@ -1,0 +1,5 @@
+
+#add by chipsailing
+# cs_fp_hw hidl, the hidl class also need configure the secontext
+vendor.chipsailing.fingerprint::IChipsailingFingerprint u:object_r:cs_fp_hwservice:s0
+

@@ -1,0 +1,16 @@
+# ==============================================
+# MICROTRUST Policy Rule
+# ==============================================
+
+# Date : 2015/06/12
+# Operation: TEEI integration
+# Purpose: access for fp device and client device of TEEI
+# Package: com.microtrust.mtee
+allow system_app teei_fp_device:chr_file rw_file_perms;
+allow system_app teei_client_device:chr_file r_file_perms;
+
+# Date : 2017/12/18
+# Operation: ifaa integration
+# Purpose: access for ifaa_service call
+# Package: org.ifaa.android.service
+allow system_app mtk_ifaa_service:service_manager add;

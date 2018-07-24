@@ -1,0 +1,9 @@
+config BIRD_FINGERPRINT_ICNT7152
+	tristate "CONFIG_BIRD_FINGERPRINT_ICNT7152  chipone FP spi deriver"
+        depends on SPI
+	default n
+	help
+	  Say Y here to use silead fingerprint driver.
+
+	  If unsure, say N.
+
